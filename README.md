@@ -130,8 +130,9 @@ Create a .env file in both frontend and backend
 ## 1. Clone the repository
 
 ```txt
-git clone https://github.com/your-username/ecommerce-app.git
-cd ecommerce-app
+
+git clone https://github.com/vishoodi-dev/e-commerce.git
+cd e-commerce
 ```
 
 ## 2. Setup Frontend
