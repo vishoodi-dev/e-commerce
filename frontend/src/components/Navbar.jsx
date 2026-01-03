@@ -51,6 +51,19 @@ const Navbar = () => {
             onClick={() => setVisible(!visible)}
           />
         </div>
+        {/* Sidebar menu for small screens */}
+        <div className={`fixed inset-0 bg-white transition-transform duration-300 sm:hidden z-[60] ${visible ? 'translate-x-0' : '-translate-x-full'}`}>
+          <div className='flex flex-col text-gray-700 w-full'>
+            <div className='flex items-center gap-4 h-14 px-4 border-b cursor-pointer' onClick={() => setVisible(false)}>
+              <img className='h-4 rotate-180' src={assets.dropdown_icon} alt="back" />
+              <p className='text-lg font-medium'>Back</p>
+            </div>
+            <NavLink to="/" onClick={() => setVisible(false)} className='py-3 px-6 border-b'>HOME</NavLink>
+            <NavLink to="/collection" onClick={() => setVisible(false)} className='py-3 px-6 border-b'>COLLECTIONS</NavLink>
+            <NavLink to="/about" onClick={() => setVisible(false)} className='py-3 px-6 border-b'>ABOUT</NavLink>
+            <NavLink to="/contact" onClick={() => setVisible(false)} className='py-3 px-6 border-b'>CONTACT</NavLink>
+          </div>
+        </div>
     </div>
   )
 }
