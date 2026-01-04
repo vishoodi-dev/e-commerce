@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
+import { useCart } from '../context/CartContext'
 
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false)
+  const { openDrawer, items } = useCart()
+  const itemCount = items.reduce((sum, it) => sum + it.quantity, 0)
   return (
     <div className='fixed top-0 left-0 w-full h-16 bg-white shadow z-50 flex items-center px-6'>
         <div className='flex-1'>
@@ -40,10 +43,10 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <Link to="/cart" className='relative'>
-            <img src={assets.cart_icon} alt="cart" className='w-5 min-w-5' />
-            <p className='absolute -top-1 -right-2 text-[11px] w-4 h-4 bg-red-500 text-white rounded-full flex items-center justify-center'>0</p>
-          </Link>
+          <button type="button" className='relative' onClick={openDrawer} aria-label="Open cart">
+            <img src={assets.cart_icon} alt="" className='w-5 min-w-5' />
+            <p className='absolute -top-1 -right-2 text-[11px] w-4 h-4 bg-red-500 text-white rounded-full flex items-center justify-center'>{itemCount}</p>
+          </button>
           <img 
             src={assets.menu_icon} 
             alt="menu" 
